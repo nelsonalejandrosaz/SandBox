@@ -1,0 +1,19 @@
+-- Agregando Roles
+--INSERT INTO AspNetRoles(Id,Name,NormalizedName,ConcurrencyStamp)
+--VALUES (LOWER(NEWID()),'Administrador','ADMINISTRADOR',LOWER(NEWID()))
+--INSERT INTO AspNetRoles(Id,Name,NormalizedName,ConcurrencyStamp)
+--VALUES (LOWER(NEWID()),'Jefe','JEFE',LOWER(NEWID()))
+--INSERT INTO AspNetRoles(Id,Name,NormalizedName,ConcurrencyStamp)
+--VALUES (LOWER(NEWID()),'Operario','OPERARIO',LOWER(NEWID()))
+
+-- Agregandro Politicas
+--INSERT INTO Policies(Nombre)
+--VALUES ('Configuracion');
+--INSERT INTO Policies(Nombre)
+--VALUES ('AdministrarCatalogos');
+--INSERT INTO Policies(Nombre)
+--VALUES ('AdministrarUsuarios');
+--INSERT INTO Policies(Nombre)
+--VALUES ('CrearProductos');
+--INSERT INTO Policies(Nombre)
+--VALUES ('LeerProductos');

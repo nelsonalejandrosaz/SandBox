@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SandBox.Models.AppRole>
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="Rol" asp-action="Create">Nuevo rol</a>
+</p>
+<table class="table table-bordered mt-4">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var rol in @Model)
+    {
+        <tr>
+            <td>@rol.Id</td>
+            <td>@rol.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@rol.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@rol.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@rol.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
