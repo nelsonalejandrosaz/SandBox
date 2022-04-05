@@ -89,15 +89,24 @@ namespace SandBox.Controllers
             var policiesIds = HttpContext.Request.Form["Policies"];
             if (ModelState.IsValid)
             {
-                await _roleManager.UpdateAsync(role);
+                //var result = await _roleManager.UpdateAsync(role);
+                //var policies2 = _context.Roles.First(r => r.Id == role.Id).Policies;
+                 _context.Roles.Update(role);
                 await _context.Entry(role).Collection(r => r.Policies).LoadAsync();
-                role.Policies.Clear();
+                role.Policies?.Clear();
+                //if(policies2 is not null) _context.RemoveRange(policies2);
+                var result2 = await _context.SaveChangesAsync();
                 foreach (var policyId in policiesIds)
                 {
-                    var policy = _context.Policies.Find(int.Parse(policyId));
-                    if (policy is not null) role.Policies.Add(policy);
+                    var policy = await _context.Policies.FindAsync(int.Parse(policyId));
+                    if (policy is not null) role.Policies?.Add(policy);
                 }
+
+                //await _context.DisposeAsync();
+
                 await _roleManager.UpdateAsync(role);
+                
+                //await _roleManager.UpdateAsync(role);
                 return RedirectToAction(nameof(Index));
             }
             var selectedPolicies = role.Policies.Select(p => p.Id.ToString()).ToArray();
